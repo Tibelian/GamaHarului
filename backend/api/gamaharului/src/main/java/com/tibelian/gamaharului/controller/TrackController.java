@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tibelian.gamaharului.exception.NotFoundException;
-import com.tibelian.gamaharului.model.Track;
+import com.tibelian.gamaharului.model.music.Track;
 import com.tibelian.gamaharului.service.TrackService;
 
 @RestController
@@ -29,7 +29,7 @@ public class TrackController {
 	}
 
     @GetMapping("/{id}")
-    public Track getById(@PathVariable Long id) {
+    public Track getById(@PathVariable int id) {
         Track track = trackService.getById(id);
         if (track == null) {
         	throw new NotFoundException("Could not find a track with the id " + id);
@@ -38,7 +38,7 @@ public class TrackController {
     }
 
     @PutMapping("/{id}")
-    public Track edit(@PathVariable Long id, @RequestBody Track track) {
+    public Track edit(@PathVariable int id, @RequestBody Track track) {
         Track oldTrack = getById(id);
     	return trackService.edit(oldTrack.getId(), track);
     }
@@ -49,7 +49,7 @@ public class TrackController {
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id) {
+    public void delete(@PathVariable int id) {
         Track track = getById(id);
     	trackService.delete(track.getId());
     }
