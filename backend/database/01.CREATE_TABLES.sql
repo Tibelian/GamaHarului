@@ -5,7 +5,8 @@ CREATE TABLE artist (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     bio TEXT,
-    image_url VARCHAR(255)
+    image_url VARCHAR(255),
+    total_play_count INT DEFAULT 0
 );
 
 CREATE TABLE album (

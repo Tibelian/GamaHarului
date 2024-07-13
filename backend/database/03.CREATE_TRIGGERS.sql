@@ -7,9 +7,15 @@ CREATE TRIGGER update_play_count
 AFTER INSERT ON play
 FOR EACH ROW
 BEGIN
+	-- increase the current track play_count
     UPDATE track
     SET play_count = play_count + 1
     WHERE id = NEW.track_id;
+	
+	-- increase the artist total play_count
+    UPDATE artist
+    SET total_play_count = total_play_count + 1
+    WHERE id = (SELECT artist_id FROM track WHERE id = NEW.track_id);
 END //
 DELIMITER ;
 
