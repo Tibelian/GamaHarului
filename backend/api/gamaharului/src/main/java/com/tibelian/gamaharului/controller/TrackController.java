@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tibelian.gamaharului.exception.NotFoundException;
@@ -28,6 +29,16 @@ public class TrackController {
 		return trackService.getAll();
 	}
 
+    @GetMapping("/most-played")
+    public List<Track> getMostPlayedTracks(@RequestParam(defaultValue = "10") int top) {
+        return trackService.findTopByPlayCount(top);
+    }
+    
+    @GetMapping("/most-liked")
+    public List<Track> getMostLikedTracks(@RequestParam(defaultValue = "10") int top) {
+        return trackService.findTopByLikedCount(top);
+    }
+	
     @GetMapping("/{id}")
     public Track getById(@PathVariable int id) {
         Track track = trackService.getById(id);
@@ -53,6 +64,5 @@ public class TrackController {
         Track track = getById(id);
     	trackService.delete(track.getId());
     }
-    
 	
 }

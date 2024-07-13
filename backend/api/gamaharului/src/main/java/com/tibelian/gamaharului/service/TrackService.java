@@ -44,4 +44,21 @@ public class TrackService {
 		trackRepository.deleteById(id);
 	}
 	
+	public List<Track> findTopByPlayCount() {
+		return findTopByPlayCount(10);
+	}
+
+	public List<Track> findTopByPlayCount(int top) {
+		// TODO: limit max and min top
+		return trackRepository.findTopByPlayCount(top);
+	}
+
+	public List<Track> findTopByLikedCount() {
+		return findTopByLikedCount(10);
+	}
+
+	public List<Track> findTopByLikedCount(int top) {
+    	// TODO: limit max and min top
+		return trackRepository.findTopByLikedCount(top);
+	}
 }

@@ -23,6 +23,7 @@ CREATE TABLE track (
     album_id INT,
     artist_id INT,
     play_count INT DEFAULT 0,
+    like_count INT DEFAULT 0,
     FOREIGN KEY (album_id) REFERENCES album(id),
     FOREIGN KEY (artist_id) REFERENCES artist(id)
 );
@@ -103,30 +104,6 @@ CREATE TABLE play (
     FOREIGN KEY (track_id) REFERENCES track(id),
     FOREIGN KEY (user_id) REFERENCES user(id)
 );
-DELIMITER //
-CREATE TRIGGER update_play_count
-AFTER INSERT ON play
-FOR EACH ROW
-BEGIN
-    UPDATE track
-    SET play_count = play_count + 1
-    WHERE id = NEW.track_id;
-END //
-DELIMITER ;
-
---------------------
--- FAVOURITE LIST --
---------------------
-DELIMITER //
-CREATE TRIGGER after_user_insert
-AFTER INSERT ON user
-FOR EACH ROW
-BEGIN
-    -- new playlist for favorite songs
-    INSERT INTO playlist (name, user_id)
-    VALUES ('_fav_', NEW.id);
-END //
-DELIMITER ;
 
 -- apply changes
 COMMIT;
