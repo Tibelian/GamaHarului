@@ -1,14 +1,20 @@
 package com.tibelian.gamaharului.model.music;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Album {
 
 	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String title;
+    
+    @ManyToOne
     private Artist artist;
     private String coverUrl;
     

@@ -5,16 +5,25 @@ import java.util.Date;
 import com.tibelian.gamaharului.model.auth.User;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Playlist {
 
 	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-    private String name;
-    private String description;
+    
+	private String name;
+    
+	private String description;
+    
     private Date createdAt;
+   
+    @ManyToOne
     private User user;
     
 	public int getId() {

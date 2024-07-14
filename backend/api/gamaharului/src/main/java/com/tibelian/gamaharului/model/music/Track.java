@@ -3,14 +3,16 @@ package com.tibelian.gamaharului.model.music;
 import java.util.Date;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Track {
 	
 	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
     private String title;
@@ -18,11 +20,9 @@ public class Track {
     private Date releaseDate;
 
     @ManyToOne
-    @JoinColumn(name = "album_id")
     private Album album;
     
     @ManyToOne
-    @JoinColumn(name = "artist_id")
     private Artist artist;
     
     private int playCount;
