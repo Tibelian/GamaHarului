@@ -25,6 +25,6 @@ public interface TrackRepository extends JpaRepository<Track, Integer> {
 	 * @return
 	 */
     @Query(value = "SELECT * FROM track ORDER BY like_count DESC LIMIT :top", nativeQuery = true)
-	List<Track> findTopByLikedCount(int top);
+	List<Track> findTopByLikedCount(@Param("top") int top);
 	
 }
