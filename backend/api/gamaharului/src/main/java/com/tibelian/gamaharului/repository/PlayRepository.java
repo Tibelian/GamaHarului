@@ -6,7 +6,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import com.tibelian.gamaharului.controller.response.MostPlayedTracksByUserResponse;
+import com.tibelian.gamaharului.controller.response.MostPlayedEntityResponse;
+import com.tibelian.gamaharului.model.music.Artist;
+import com.tibelian.gamaharului.model.music.Genre;
 import com.tibelian.gamaharului.model.music.Play;
 import com.tibelian.gamaharului.model.music.Track;
 
@@ -32,6 +34,26 @@ public interface PlayRepository extends JpaRepository<Play, Integer> {
                    "GROUP BY t.id " +
                    "ORDER BY playCount DESC " +
                    "LIMIT :limit", nativeQuery = true)
-    List<MostPlayedTracksByUserResponse> findMostPlayedTracksByUser(@Param("userId") int userId, @Param("limit") int limit);
+    List<MostPlayedEntityResponse<Track>> findMostPlayedTracksByUser(@Param("userId") int userId, @Param("limit") int limit);
+    
+    @Query(value = "SELECT a.*, SUM(t.play_count) AS playCount " +
+		           "FROM play p " +
+		           "JOIN track t ON p.track_id = t.id " +
+		           "JOIN artist a ON t.artist_id = a.id " +
+		           "WHERE p.user_id = :userId " +
+		           "GROUP BY a.id " +
+		           "ORDER BY totalPlayCount DESC" +
+	               "LIMIT :limit", nativeQuery = true)
+    List<MostPlayedEntityResponse<Artist>> findMostPlayedArtistsByUser(@Param("userId") int userId, @Param("limit") int limit);
+    
+    @Query(value = "SELECT g.*, SUM(t.play_count) AS playCount " +
+		           "FROM play p " +
+		           "JOIN track_genre tg ON p.track_id = tg.track_id " +
+		           "JOIN genre g ON tg.genre_id = g.id " +
+		           "WHERE p.user_id = :userId " +
+		           "GROUP BY g.id " +
+		           "ORDER BY totalPlayCount DESC " +
+		           "LIMIT :limit", nativeQuery = true)
+	List<MostPlayedEntityResponse<Genre>> findMostPlayedGenresByUser(int userId, int limit);
 
 }

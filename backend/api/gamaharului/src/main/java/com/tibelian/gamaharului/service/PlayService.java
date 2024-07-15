@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tibelian.gamaharului.controller.response.MostPlayedTracksByUserResponse;
+import com.tibelian.gamaharului.controller.response.MostPlayedEntityResponse;
+import com.tibelian.gamaharului.model.music.Artist;
+import com.tibelian.gamaharului.model.music.Genre;
 import com.tibelian.gamaharului.model.music.Play;
 import com.tibelian.gamaharului.model.music.Track;
 import com.tibelian.gamaharului.repository.PlayRepository;
@@ -42,8 +44,16 @@ public class PlayService {
 	
 	
 
-    public List<MostPlayedTracksByUserResponse> getMostPlayedTracksByUser(int userId, int limit) {
+    public List<MostPlayedEntityResponse<Track>> getMostPlayedTracksByUser(int userId, int limit) {
         return playRepository.findMostPlayedTracksByUser(userId, limit);
     }
+
+	public List<MostPlayedEntityResponse<Artist>> getMostPlayedArtistsByUser(int userId, int limit) {
+        return playRepository.findMostPlayedArtistsByUser(userId, limit);
+	}
+
+	public List<MostPlayedEntityResponse<Genre>> getMostPlayedGenresByUser(int userId, int limit) {
+        return playRepository.findMostPlayedGenresByUser(userId, limit);
+	}
 	
 }

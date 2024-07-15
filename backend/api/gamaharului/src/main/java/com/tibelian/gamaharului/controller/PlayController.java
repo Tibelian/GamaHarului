@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.tibelian.gamaharului.controller.response.MostPlayedTracksByUserResponse;
+import com.tibelian.gamaharului.controller.response.MostPlayedEntityResponse;
+import com.tibelian.gamaharului.model.music.Artist;
+import com.tibelian.gamaharului.model.music.Genre;
 import com.tibelian.gamaharului.model.music.Play;
 import com.tibelian.gamaharului.model.music.Track;
 import com.tibelian.gamaharului.service.PlayService;
@@ -27,8 +29,8 @@ public class PlayController {
         return playService.save(play);
     }
 
-    @GetMapping("/latest")
-    public List<Track> getLastPlayedTracks(
+    @GetMapping("/tracks/latest")
+    public List<Track> getLatestPlayedTracks(
     		@RequestParam(defaultValue = "10") int limit, 
     		@RequestParam(required = false) Integer userId) {
     	if (userId == null) {
@@ -38,18 +40,35 @@ public class PlayController {
         return playService.findLatestPlayedTracksByUser(userId, limit);
     }
 
-    @GetMapping("/most-played")
-    public List<MostPlayedTracksByUserResponse> getMostPlayedTracksByUser(
+    @GetMapping("/tracks/most-played")
+    public List<MostPlayedEntityResponse<Track>> getMostPlayedTracksByUser(
     		@RequestParam(defaultValue = "10") int limit, 
     		@RequestParam(required = true) int userId) {
     	// TODO: check if user exists
         return playService.getMostPlayedTracksByUser(userId, limit);
     }
+
+    @GetMapping("/artists/most-played")
+    public List<MostPlayedEntityResponse<Artist>> getMostPlayedAtristsByUser(
+    		@RequestParam(defaultValue = "10") int limit, 
+    		@RequestParam(required = true) int userId) {
+    	// TODO: check if user exists
+        return playService.getMostPlayedArtistsByUser(userId, limit);
+    }
+
+    @GetMapping("/genres/most-played")
+    public List<MostPlayedEntityResponse<Genre>> getMostPlayedGenresByUser(
+    		@RequestParam(defaultValue = "10") int limit, 
+    		@RequestParam(required = true) int userId) {
+    	// TODO: check if user exists
+        return playService.getMostPlayedGenresByUser(userId, limit);
+    }
+    
     
     // TODO: create the next functions: 
     // 1. obtain user's last plays -- DONE
-    // 2. obtain user`s most played tracks
-    // 3. obtain user`s most played artists
-    // 4. obtain user`s most played genres
+    // 2. obtain user`s most played tracks -- DONE
+    // 3. obtain user`s most played artists -- DONE
+    // 4. obtain user`s most played genres -- DONE
     
 }

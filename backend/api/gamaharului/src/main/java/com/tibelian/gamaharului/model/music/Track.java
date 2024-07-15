@@ -1,11 +1,13 @@
 package com.tibelian.gamaharului.model.music;
 
 import java.util.Date;
+import java.util.Set;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 
 @Entity
@@ -24,6 +26,9 @@ public class Track {
     
     @ManyToOne
     private Artist artist;
+    
+    @ManyToMany
+    private Set<Genre> genres;
     
     private int playCount;
     
@@ -68,6 +73,14 @@ public class Track {
 	public void setArtist(Artist artist) {
 		this.artist = artist;
 	}
+
+    public Set<Genre> getGenres() {
+        return genres;
+    }
+
+    public void setGenres(Set<Genre> genres) {
+        this.genres = genres;
+    }
 
 	public int getPlayCount() {
 		return playCount;
