@@ -1,3 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import "bootstrap";
+
+@import "app/shared/variables";
+
+// custom variables
+:root {
+  --sidebar-width: #{$sidebar-width};
+  --sidebar-zIndex: #{$sidebar-zIndex};
+
+  --webplayer-height: #{$webplayer-height};
+  --webplayer-zIndex: #{$webplayer-zIndex};
+
+  --header-height: #{$header-height};
+}
+
+// custom global classes

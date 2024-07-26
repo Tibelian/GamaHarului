@@ -95,10 +95,9 @@ export class HttpService {
   }
 
   /**
-   * Performs a `get` HTTP request to the IGEA REST API.
+   * Performs a `get` HTTP request to the
    *
    * @param endPointURL  Relative URL of the service, **including the service name and method**.
-   *                     E.g.: `httpService.get(IgeaHttpService.MAP + '/' + mapId + '/layers');`
    * @param options  The optional HTTP request options, including search parameters.
    *                 Use {@link #createRequestOptions} to get ans instance of this object
    * @returns The response body wrapped as an `Observable` object
@@ -159,7 +158,7 @@ export class HttpService {
   }
 
   /**
-   * Performs an HTTP request to the IGEA REST API.
+   * Performs an HTTP request
    * Add custom headers or other request options in this method.
    *
    * @param method  The http request method type: `get`, `put`, `post`, `delete`, `patch`
