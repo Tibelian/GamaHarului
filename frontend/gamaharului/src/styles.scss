@@ -15,4 +15,9 @@
   --header-height: #{$header-height};
 }
 
+// modifying bootstrap variables
+:root {
+  --bs-body-font-size: 1.2rem;
+}
+
 // custom global classes

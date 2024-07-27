@@ -4,5 +4,4 @@ export interface MenuItem {
   text: string;
   link: string;
   icon?: IconName | [IconPrefix, IconName];
-  exactLink?: boolean;
 }

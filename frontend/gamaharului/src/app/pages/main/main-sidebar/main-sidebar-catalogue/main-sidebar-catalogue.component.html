@@ -1,0 +1,35 @@
+<div class="wrapper">
+  <div class="dropdown">
+    <button
+      class="btn text-start px-3 dropdown-toggle w-100 text-truncate"
+      type="button"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
+    >
+      <fa-icon icon="shuffle"></fa-icon>
+      Random tracks
+    </button>
+    <ul class="dropdown-menu">
+      <li>
+        <button class="dropdown-item" type="button">Month's tend</button>
+      </li>
+      <li>
+        <button class="dropdown-item" type="button">Today`s trend</button>
+      </li>
+    </ul>
+  </div>
+
+  <div class="list-group mt-2">
+    <a
+      *ngFor="let item of data"
+      [routerLink]="item.link"
+      class="list-group-item list-group-item-action border-0"
+      aria-current="true"
+    >
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-0 text-truncate">{{ item.title }}</h5>
+      </div>
+      <span class="text-muted">{{ item.description }}</span>
+    </a>
+  </div>
+</div>

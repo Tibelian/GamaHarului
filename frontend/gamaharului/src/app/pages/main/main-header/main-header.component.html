@@ -1,1 +1,32 @@
-<p>main-header works!</p>
+<div class="d-flex w-100 h-100">
+  <nav class="navbar navbar-expand-lg p-0 w-100">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">APP NAME</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#headerNavbar"
+        aria-controls="headerNavbar"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="headerNavbar">
+        <span class="navbar-text">TODO: add some text here</span>
+        <ul class="navbar-nav ms-auto">
+          <li *ngFor="let item of menu" class="nav-item">
+            <a
+              class="nav-link"
+              [appTooltip]="item.text"
+              [routerLink]="item.link"
+            >
+              <fa-icon [icon]="item.icon!"></fa-icon>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>

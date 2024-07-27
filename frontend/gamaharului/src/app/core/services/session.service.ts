@@ -1,5 +1,6 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { AuthenticatedUser } from '../models/authenticated-user.interface';
+import { WINDOW } from '../utils/window';
 
 @Injectable({
   providedIn: 'root',
@@ -7,6 +8,9 @@ import { AuthenticatedUser } from '../models/authenticated-user.interface';
 export class SessionService {
   /** */
   private _authenticatedUser!: AuthenticatedUser;
+
+  /** */
+  private window = inject(WINDOW);
 
   /** */
   public get authenticatedUser(): AuthenticatedUser | null {
@@ -17,7 +21,7 @@ export class SessionService {
   /** */
   private checkLocalStorage() {
     if (this._authenticatedUser == null) {
-      const prev = localStorage.getItem('loggedIn');
+      const prev = this.window.localStorage.getItem('loggedIn');
       if (prev != null) {
         this._authenticatedUser = JSON.parse(prev);
       }

@@ -1,0 +1,33 @@
+.wrapper {
+  padding: 0.7rem;
+}
+.dropdown-toggle {
+  border: none;
+  &:focus-visible {
+    outline: -webkit-focus-ring-color auto 1px;
+  }
+  &:not(.show) fa-icon {
+    color: var(--bs-tertiary-color);
+  }
+}
+.dropdown-toggle.show {
+  color: var(--bs-link-hover-color);
+}
+
+.list-group-item {
+  border-radius: var(--bs-border-radius-lg);
+}
+
+.list-group-item {
+  h5 {
+    font-weight: 400;
+  }
+  span {
+    font-size: calc(var(--bs-body-font-size) / 1.2);
+  }
+}
+
+.list-group-item:hover h5 {
+  color: var(--bs-link-hover-color);
+  font-weight: 400;
+}
