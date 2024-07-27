@@ -1,17 +1,30 @@
-<div class="wrapper">
+<div class="layout-wrapper">
   <!-- LEFT FIXED SIDE BAR -->
-  <aside class="border-end">aside</aside>
+  <div class="layout-sidebar border-end">
+    <aside>
+      <app-main-sidebar></app-main-sidebar>
+    </aside>
+  </div>
 
-  <!-- TOP NAVIGATION -->
-  <header class="border-bottom">header</header>
+  <section class="layout-main">
+    <!-- TOP NAVIGATION -->
+    <header class="border-bottom">
+      <app-main-header></app-main-header>
+    </header>
 
-  <!-- MAIN CONTENT -->
-  <main>
-    <div class="container-fluid">
-      <p>main works!</p>
-      <router-outlet />
-    </div>
-  </main>
+    <!-- MAIN CONTENT -->
+    <main>
+      <div class="container-fluid">
+        <p>main works!</p>
+        <router-outlet />
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <app-main-footer></app-main-footer>
+    </footer>
+  </section>
 
   <!-- BOTTOM FIXED PLAYER -->
   <section class="webplayer border-top">webplayer</section>

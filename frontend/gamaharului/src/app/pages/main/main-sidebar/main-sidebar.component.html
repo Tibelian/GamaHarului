@@ -1,0 +1,15 @@
+<p>main-sidebar works!</p>
+
+<ul class="nav flex-column">
+  <li *ngFor="let btn of buttons" class="nav-item">
+    <a
+      class="nav-link active"
+      [routerLink]="btn.link"
+      routerLinkActive="active"
+      aria-current="page"
+    >
+      <fa-icon *ngIf="btn.icon" [icon]="btn.icon"></fa-icon>
+      {{ btn.text }}
+    </a>
+  </li>
+</ul>

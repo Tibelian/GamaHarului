@@ -7,7 +7,7 @@ import { catchError, Observable, tap, throwError } from 'rxjs';
 })
 export class PropertiesService {
   /** */
-  private config: any = {};
+  private config: any;
 
   /** */
   private http: HttpClient = inject(HttpClient);
@@ -19,8 +19,11 @@ export class PropertiesService {
   loadConfig(): Observable<any> {
     return this.http.get('/assets/config.json').pipe(
       tap((config) => {
-        console.log('Configuration loaded successfully', config);
         this.config = { ...config };
+        console.log(
+          '[SYSTEM] Configuration loaded successfully',
+          this.config.app,
+        );
       }),
       catchError(this.handleError),
     );
@@ -29,6 +32,7 @@ export class PropertiesService {
   /**
    * Acceso a las variables anidadas
    * @param key
+   * @param delimiter
    * @returns
    */
   get(key: string, delimiter = '.'): any {
@@ -39,6 +43,27 @@ export class PropertiesService {
     return key
       .split(delimiter)
       .reduce((o, i) => (o && o[i] !== 'undefined' ? o[i] : null), this.config);
+  }
+
+  /**
+   *
+   * @param key
+   * @param delimiter
+   * @returns
+   */
+  has(key: string, delimiter = '.'): boolean {
+    if (!this.config) {
+      throw new Error('Config has not been loaded yet.');
+    }
+
+    return (
+      key
+        .split(delimiter)
+        .reduce(
+          (o, i) => (o && o.hasOwnProperty(i) ? o[i] : undefined),
+          this.config,
+        ) !== undefined
+    );
   }
 
   /**

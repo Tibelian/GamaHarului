@@ -64,11 +64,4 @@ public class PlayController {
         return playService.getMostPlayedGenresByUser(userId, limit);
     }
     
-    
-    // TODO: create the next functions: 
-    // 1. obtain user's last plays -- DONE
-    // 2. obtain user`s most played tracks -- DONE
-    // 3. obtain user`s most played artists -- DONE
-    // 4. obtain user`s most played genres -- DONE
-    
 }
