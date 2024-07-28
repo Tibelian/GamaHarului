@@ -1,0 +1,51 @@
+<app-card
+  [imageUrl]="data.thumbnail"
+  [width]="'100%'"
+  layout="overlay"
+  [cardClasses]="['img-focus', 'ratio', 'ratio-1x1']"
+  [imgClasses]="['ratio']"
+  (cardClick)="onCardClicked()"
+>
+  <div class="d-flex flex-column h-100 card-content">
+    <div class="ms-auto extra-options">
+      <div class="d-flex flex-column gap-3">
+        <button
+          class="btn rounded-circle btn-secondary"
+          appTooltip="Share song"
+          placement="left"
+        >
+          <fa-icon icon="share"></fa-icon>
+        </button>
+        <button
+          class="btn rounded-circle btn-secondary"
+          appTooltip="Add to favourite list"
+          placement="left"
+        >
+          <fa-icon icon="heart"></fa-icon>
+        </button>
+      </div>
+    </div>
+    <div class="mt-auto">
+      <button
+        class="btn btn-lg rounded-circle btn-secondary"
+        appTooltip="Play"
+        placement="right"
+      >
+        <fa-icon icon="play"></fa-icon>
+      </button>
+    </div>
+  </div>
+</app-card>
+
+<div class="mt-2">
+  <h5 class="fw-bold">
+    <a class="text-decoration-none" [routerLink]="trackLink">
+      {{ data.title }}
+    </a>
+  </h5>
+  <h6 class="mb-0">
+    <a class="text-muted text-decoration-none" [routerLink]="artistLink">
+      {{ data.artist?.name }}
+    </a>
+  </h6>
+</div>

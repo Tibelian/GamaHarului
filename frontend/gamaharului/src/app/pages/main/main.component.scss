@@ -6,6 +6,11 @@
 }
 .layout-main {
   margin-left: var(--sidebar-width);
+  height: calc(100% - var(--webplayer-height));
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  background: var(--main-content-bg);
 }
 .layout-sidebar {
   position: absolute;
@@ -13,6 +18,7 @@
   z-index: var(--sidebar-zIndex);
   width: var(--sidebar-width);
   height: calc(100% - var(--webplayer-height));
+  background: var(--sidebar-bg);
 }
 
 header {
@@ -24,4 +30,5 @@ header {
   bottom: 0;
   height: var(--webplayer-height);
   width: 100vw;
+  background: var(--webplayer-bg);
 }

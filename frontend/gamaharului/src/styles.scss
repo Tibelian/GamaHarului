@@ -4,20 +4,51 @@
 
 @import "app/shared/variables";
 
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+
 // custom variables
 :root {
   --sidebar-width: #{$sidebar-width};
   --sidebar-zIndex: #{$sidebar-zIndex};
+  --sidebar-bg: #{$sidebar-background};
 
   --webplayer-height: #{$webplayer-height};
   --webplayer-zIndex: #{$webplayer-zIndex};
+  --webplayer-bg: #{$webplayer-background};
 
   --header-height: #{$header-height};
+  --main-content-bg: var(--bs-gray-900);
 }
 
 // modifying bootstrap variables
 :root {
-  --bs-body-font-size: 1.2rem;
+  //  --bs-body-font-size: 1.2rem;
+  --bs-body-font-family: "Montserrat", sans-serif;
 }
 
 // custom global classes
+.img-focus {
+  overflow: hidden;
+  img {
+    transition: transform 0.3s;
+  }
+  &:hover img {
+    transform: scale(1.05);
+  }
+}
+
+.img-circle {
+  .card-img-overlay,
+  img {
+    border-radius: 50%;
+    transition: background 0.3s;
+  }
+  &:hover .card-img-overlay {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+}
+app-artist-card {
+  .img-circle img {
+    filter: brightness(0.5);
+  }
+}

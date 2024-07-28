@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { LandingComponent } from './pages/landing/landing.component';
+import { MainDashboardComponent } from './pages/main/main-dashboard/main-dashboard.component';
 import { MainComponent } from './pages/main/main.component';
 
 export const routes: Routes = [
@@ -11,6 +12,10 @@ export const routes: Routes = [
     path: 'webplayer',
     component: MainComponent,
     children: [
+      {
+        path: '',
+        component: MainDashboardComponent,
+      },
       {
         path: 'artist',
         loadChildren: () =>

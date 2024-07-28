@@ -1,0 +1,66 @@
+<div
+  class="card"
+  [style]="{ width, height }"
+  [ngClass]="cardClasses"
+  (click)="onCardClick($event)"
+>
+  <ng-container [ngSwitch]="layout">
+    <!-- FEATURED LAYOUT -->
+    <ng-container *ngSwitchCase="'featured'">
+      <ng-content select=".card-header"></ng-content>
+      <div class="card-body">
+        <ng-container [ngTemplateOutlet]="content"></ng-container>
+      </div>
+      <ng-content select=".card-footer"></ng-content>
+    </ng-container>
+
+    <!-- IMAGE OVERLAY LAYOUT -->
+    <ng-container *ngSwitchCase="'overlay'">
+      <div [ngClass]="imgClasses">
+        <img
+          *ngIf="imageUrl"
+          [style]="{ height, width }"
+          [attr.src]="imageUrl"
+          class="card-img"
+        />
+      </div>
+      <div class="card-img-overlay">
+        <ng-container [ngTemplateOutlet]="content"></ng-container>
+      </div>
+    </ng-container>
+
+    <!-- IMAGE HORIZONTAL LAYOUT -->
+    <ng-container *ngSwitchCase="'horizontal'">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <div [ngClass]="imgClasses">
+            <img
+              *ngIf="imageUrl"
+              [attr.src]="imageUrl"
+              class="img-fluid rounded-start"
+            />
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <ng-container [ngTemplateOutlet]="content"></ng-container>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+
+    <!-- DEFAULT LAYOUT -->
+    <ng-container *ngSwitchDefault>
+      <div [ngClass]="imgClasses">
+        <img *ngIf="imageUrl" [attr.src]="imageUrl" class="card-img-top" />
+      </div>
+      <div class="card-body">
+        <ng-container [ngTemplateOutlet]="content"></ng-container>
+      </div>
+    </ng-container>
+  </ng-container>
+</div>
+
+<ng-template #content>
+  <ng-content></ng-content>
+</ng-template>

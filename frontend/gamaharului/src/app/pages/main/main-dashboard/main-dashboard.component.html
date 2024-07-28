@@ -1,0 +1,45 @@
+<div class="wrapper">
+  <section class="pb-4">
+    <h2>Trending tracks</h2>
+    <div class="d-flex flex-wrap">
+      <div *ngFor="let t of trendingSongs" class="col-lg-2 col-md-3 col-4">
+        <div class="me-4 mb-4">
+          <app-track-card [data]="t"></app-track-card>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pb-4">
+    <h2>Suggested Artists</h2>
+    <div class="d-flex flex-wrap">
+      <div *ngFor="let a of suggestedArtists" class="col-lg-2 col-md-3 col-4">
+        <div class="me-4 mb-4">
+          <app-artist-card [data]="a"></app-artist-card>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pb-4">
+    <h2>New Albums</h2>
+    <div class="d-flex flex-wrap">
+      <div *ngFor="let a of newAlbums" class="col-lg-2 col-md-3 col-4">
+        <div class="me-4 mb-4">
+          <app-album-card [data]="a"></app-album-card>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pb-4">
+    <h2>Latest Releases</h2>
+    <div class="d-flex flex-wrap">
+      <div *ngFor="let r of latestReleases" class="col-lg-2 col-md-3 col-4">
+        <div class="me-4 mb-4">
+          <app-track-card [data]="r"></app-track-card>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
