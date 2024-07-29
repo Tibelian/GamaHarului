@@ -33,7 +33,7 @@ export class MainSidebarMenuComponent implements OnInit {
       },
       {
         text: this.translate.instant('MainMenu.ExplorePage'),
-        icon: 'search',
+        icon: 'border-all',
         link: '/webplayer/explore',
       },
     ];

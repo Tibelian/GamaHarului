@@ -1,12 +1,11 @@
-// custom sidebar values
-$sidebar-width: 225px;
-$sidebar-zIndex: 100;
-$sidebar-background: transparent;
+////////////////////////////////
+// Default variable overrides //
+////////////////////////////////
+$primary: #20c997; //$teal;
+$secondary: rgb(38, 38, 38);
+$form-range-track-height: 0.3rem;
+$form-range-track-box-shadow: 0;
 
-// custom webplayer values
-$webplayer-height: 100px;
-$webplayer-zIndex: 150;
-$webplayer-background: transparent;
-
-// custom header values
-$header-height: 50px;
+// dark overrides
+$body-bg-dark: #0d0d0d;
+$body-secondary-bg-dark: #171717;

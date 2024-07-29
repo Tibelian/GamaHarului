@@ -1,15 +1,15 @@
 import { Component, inject, Input } from '@angular/core';
 import { Router, RouterLink, UrlTree } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { Track } from '../../../core/models/entities/track.model';
 import { LoggerService } from '../../../core/services/logger.service';
-import { TooltipDirective } from '../../directives/tooltip.directive';
 import { CardComponent } from '../card/card.component';
 
 @Component({
   selector: 'app-track-card',
   standalone: true,
-  imports: [CardComponent, FontAwesomeModule, RouterLink, TooltipDirective],
+  imports: [CardComponent, FontAwesomeModule, RouterLink, NgbTooltipModule],
   templateUrl: './track-card.component.html',
   styleUrl: './track-card.component.scss',
 })

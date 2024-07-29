@@ -1,26 +1,45 @@
 <div class="d-flex w-100 h-100">
   <nav class="navbar navbar-expand-lg p-0 w-100">
-    <div class="container-fluid">
+    <div class="container-fluid py-2">
       <button
         class="navbar-toggler"
         type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#headerNavbar"
+        (click)="isMenuCollapsed = !isMenuCollapsed"
+        [attr.aria-expanded]="!isMenuCollapsed"
         aria-controls="headerNavbar"
-        aria-expanded="false"
         aria-label="Toggle navigation"
       >
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="headerNavbar">
-        <ul class="navbar-nav ms-auto">
+      <div
+        [ngbCollapse]="isMenuCollapsed"
+        class="collapse navbar-collapse"
+        id="headerNavbar"
+      >
+        <form class="col-xl-3 col-lg-4 col-md-6 mx-2" role="search">
+          <div class="input-group">
+            <input
+              class="form-control"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button class="btn btn-secondary" type="submit">
+              <fa-icon icon="search"></fa-icon>
+            </button>
+          </div>
+        </form>
+        <ul class="navbar-nav ms-auto gap-2">
           <li *ngFor="let item of menu" class="nav-item">
             <a
-              class="nav-link"
-              [appTooltip]="item.text"
+              class="btn btn-secondary"
+              [ngbTooltip]="item.text"
               [routerLink]="item.link"
+              [attr.alt]="item.text"
+              (click)="isMenuCollapsed = true"
             >
               <fa-icon [icon]="item.icon!"></fa-icon>
+              <span class="ms-2 d-lg-none">{{ item.text }}</span>
             </a>
           </li>
         </ul>

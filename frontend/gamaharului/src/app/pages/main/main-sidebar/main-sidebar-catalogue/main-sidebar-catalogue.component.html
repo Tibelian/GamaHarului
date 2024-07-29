@@ -1,24 +1,18 @@
 <div class="wrapper">
-  <div class="dropdown">
+  <div ngbDropdown>
     <button
-      class="btn text-start px-3 dropdown-toggle w-100 text-truncate"
+      class="btn text-start px-3 w-100 text-truncate"
       type="button"
-      data-bs-toggle="dropdown"
-      aria-expanded="false"
+      id="dropdownCatalogue"
+      ngbDropdownToggle
     >
       <fa-icon icon="shuffle"></fa-icon>
       Random tracks
     </button>
-    <ul class="dropdown-menu">
-      <li>
-        <button class="dropdown-item" type="button">Month's tend</button>
-      </li>
-      <li>
-        <button class="dropdown-item" type="button">
-          Daily recommendations
-        </button>
-      </li>
-    </ul>
+    <div ngbDropdownMenu aria-labelledby="dropdownCatalogue">
+      <button ngbDropdownItem>Month's tend</button>
+      <button ngbDropdownItem>Daily recommendations</button>
+    </div>
   </div>
 
   <div class="list-group mt-2">

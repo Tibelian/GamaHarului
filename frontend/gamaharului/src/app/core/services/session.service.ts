@@ -21,7 +21,7 @@ export class SessionService {
   /** */
   private checkLocalStorage() {
     if (this._authenticatedUser == null) {
-      const prev = this.window.localStorage.getItem('loggedIn');
+      const prev = this.window.localStorage?.getItem('loggedIn');
       if (prev != null) {
         this._authenticatedUser = JSON.parse(prev);
       }

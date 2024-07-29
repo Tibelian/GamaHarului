@@ -7,8 +7,6 @@
 .layout-main {
   margin-left: var(--sidebar-width);
   height: calc(100% - var(--webplayer-height));
-  display: flex;
-  flex-direction: column;
   overflow-y: auto;
   background: var(--main-content-bg);
 }
@@ -23,6 +21,7 @@
 
 header {
   height: var(--header-height);
+  background: var(--header-bg);
 }
 
 .webplayer {

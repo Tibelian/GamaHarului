@@ -1,54 +1,54 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import "bootstrap";
-
 @import "app/shared/variables";
 
-@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap");
+
+@import "bootstrap/scss/bootstrap";
+
+//////////////////////////////////////////
+// Then add additional custom code here //
+//////////////////////////////////////////
 
 // custom variables
 :root {
-  --sidebar-width: #{$sidebar-width};
-  --sidebar-zIndex: #{$sidebar-zIndex};
-  --sidebar-bg: #{$sidebar-background};
+  --sidebar-width: 225px;
+  --sidebar-zIndex: 100;
+  --sidebar-bg: var(--bs-secondary-bg);
 
-  --webplayer-height: #{$webplayer-height};
-  --webplayer-zIndex: #{$webplayer-zIndex};
-  --webplayer-bg: #{$webplayer-background};
+  --webplayer-height: 100px;
+  --webplayer-zIndex: 150;
+  --webplayer-bg: var(--bs-secondary-bg);
 
-  --header-height: #{$header-height};
-  --main-content-bg: var(--bs-gray-900);
+  //--header-height: 75px;
+  //--header-bg: var(--bs-body-bg);
+  --main-content-bg: var(--bs-secondary-bg);
+  --component-bg: var(--bs-secondary-bg);
+
+  [data-bs-theme="dark"] {
+    --sidebar-bg: var(--bs-secondary-bg);
+    --webplayer-bg: var(--bs-secondary-bg);
+    --main-content-bg: var(--bs-body-bg);
+    //--header-bg: var(--bs-secondary-bg);
+    --component-bg: var(--bs-secondary-bg);
+  }
 }
 
 // modifying bootstrap variables
 :root {
   //  --bs-body-font-size: 1.2rem;
-  --bs-body-font-family: "Montserrat", sans-serif;
+  --bs-body-font-family: "Roboto Condensed", sans-serif;
 }
 
 // custom global classes
-.img-focus {
-  overflow: hidden;
-  img {
-    transition: transform 0.3s;
-  }
-  &:hover img {
-    transform: scale(1.05);
+
+app-artist-card {
+  .img-circle img {
+    filter: brightness(0.7);
   }
 }
 
-.img-circle {
-  .card-img-overlay,
-  img {
-    border-radius: 50%;
-    transition: background 0.3s;
-  }
-  &:hover .card-img-overlay {
-    background-color: rgba(0, 0, 0, 0.3);
-  }
-}
-app-artist-card {
-  .img-circle img {
-    filter: brightness(0.5);
-  }
+app-card .btn-secondary {
+  background-color: rgba(var(--bs-secondary-bg-rgb), 0.7);
+  border: 0;
 }
